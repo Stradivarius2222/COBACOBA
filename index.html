@@ -1,33 +1,159 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Selamat Ulang Tahun!</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rendy Riady Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+ 
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ 
 </head>
 <body>
-  <div class="container">
-    <div class="envelope" onclick="openCard()">
-      <div class="flap"></div>
-      <div class="letter">Klik untuk buka</div>
-    </div>
+  <canvas id="bgCanvas"></canvas>
 
-    <div class="card" id="card">
-      <h1>🎉 Selamat Ulang Tahun 🎂</h1>
-      <h2>Nathan Aurelius Artha</h2>
-      <p>Selamat ulang tahun yang ke-20! Semoga sehat, bahagia, dan sukses selalu! 🎁</p>
-      <div class="cake">
-        <div class="candle"></div>
-        <div class="layer layer1"></div>
-        <div class="layer layer2"></div>
-        <div class="layer layer3"></div>
+  <header class="navbar">
+      
+    <nav class="nav-container">  <!-- Hamburger Icon -->
+        <div class="hamburger" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="section home-section">
+    <p>Hi, I'm</p>
+    <h1>RENDY RIADY</h1>
+    <p>Undergraduate Computer Science Student at Bina Nusantara University</p>
+  </section>
+
+  <section id="about" class="section">
+    <div class="about-box fade-in-box">
+      <h2>About</h2>
+      <p>I am a 5th-semester Computer Science student at Bina Nusantara University, specializing in Database. Aspiring Database Specialist with a strong foundation in Computer Science. Passionate about database systems, data analysis, and business applications. My goal is to leverage technical skills and problem-solving abilities in real-world projects while gaining valuable industry experience. Alongside my focus on databases, I also have a strong passion for gaining practical experience in business, investment, and start-up industries while building networks and opportunities.</p>
+    </div>
+    <div class="skills-box fade-in-box">
+      <h2>Hard Skills</h2>
+      <p>Programming Language • Web Development • Web Design • User Interface Design • User Experience • Investment Analysis Financial • Statement Analysis</p>
+    </div>
+  </section>
+
+  <section id="profile" class="section profile-section">
+    <img src="WhatsApp Image 2025-09-24 at 21.33.24.jpeg" alt="My Photo" class="profile-pic"/>
+    <div class="text">
+      <div class="about-box fade-in-box">
+        <h2>About Me</h2>
+        <p>I am a 5th-semester Computer Science student at Bina Nusantara University, specializing in Database, with solid programming skills and a deepening interest in business applications.</p>
+      </div>
+
+      <div class="skills-box fade-in-box">
+        <h2>Skills</h2>
+        <p>Leadership · Teamwork · Creativity and Innovation · Public Speaking · Critical Thinking · Emotional Intelligence · Problem Solving · Project Management · Time Management · Organization Skills</p>
+      </div>
+
+      <div class="edu-box fade-in-box">
+        <h2>Education</h2>
+        <p>
+          Binus University <br>
+          Bachelor's Degree, Computer Science <br>
+          2023 - 2027<br>
+          Grade: 3.39 / 4.00<br>
+        </p>
+                <p>
+          Smak Penabur Kota Tangerang <br>
+          High School, Science <br>
+          2020 - 2023<br>
+          Grade: 87,14 / 100<br>
+        </p>
       </div>
     </div>
+  </section>
 
-    <canvas id="fireworks"></canvas>
-  </div>
+  <section id="experience" class="section">
+    <h2 class="section-title">Experience</h2>
 
+    <div class="exp-box fade-in-box">
+      <h3>Gamblers</h3>
+      <p>Self-employed · Self-employed<br>
+      Jul 2020 - Present · 5 yrs 2 month<br>
+      Tangerang</p>
+    </div>
+
+    <div class="exp-box fade-in-box">
+      <h3>Sebuah Perusahaan</h3>
+      <p>Sigma  Manager<br>
+      Sep 2017 - Oct 2019 · 2 yrs 2 month</p>
+      Tangerang</p>
+    </div>
+  </section>
+
+  <section id="portfolio" class="section">
+    <h2>Portfolio</h2>
+    <p>Check out some of the projects and courses I’ve worked on.</p>
+  </section>
+
+    <!-- Contact Section -->
+        
+        <footer style="background: linear-gradient(#07070a, #191c2b), url('https://example.com/handshake-background.jpg'); background-size: cover; background-position: center; color: white; padding: 40px 20px; font-family: 'Arial', sans-serif;">
+            <div style="max-width: 500px; margin: 0 auto;">
+
+
+        </div>
+          <section id="contact" class="section">
+    <h2 class="section-title">Contact Me</h2>
+        <p>Feel free to reach out for collaborations, projects, or internship.</p> <br><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    <div>
+                        <h3 style="font-size: 18px; margin-bottom: 15px; font-weight: 600; color: #fff;">Email</h3>
+                        <p style="margin: 0;"><a href="mailto:rendy.riady24@gmail.com" style="color: #fff; text-decoration: none; transition: 0.3s;">📧rendy.riady24@gmail.com</a></p>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 18px; margin-bottom: 15px; font-weight: 600; color: #fff;">Phone</h3>
+                        <p style="margin: 0;"><a href="tel: 0878-7891-7622" style="color: #fff; text-decoration: none; transition: 0.3s;">📞0878-7891-7622</a></p>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 18px; margin-bottom: 15px; font-weight: 600; color: #fff;">Office Hours</h3>
+                        <p style="margin: 0 0 5px 0;">Monday - Friday: 9am - 6pm</p>
+                        <p style="margin: 0;">Weekends: By appointment</p>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 18px; margin-bottom: 15px; font-weight: 600; color: #fff;">Location</h3>
+                        <p style="margin: 0;">Available for internship throughout Jakarta-Tangerang</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 14px;">
+                    © 2025 RendyRiady Portfolio. All rights reserved.
+                </div>
+            </div>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("navLinks");
+      navLinks.classList.toggle("show");
+    }
+  
+    // Menutup menu saat salah satu item diklik
+    const navItems = document.querySelectorAll(".nav-links li a");
+    navItems.forEach(item => {
+      item.addEventListener("click", () => {
+        const navLinks = document.getElementById("navLinks");
+        navLinks.classList.remove("show");
+      });
+    });
+  </script>
+    
   <script src="script.js"></script>
 </body>
 </html>

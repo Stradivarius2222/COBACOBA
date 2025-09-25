@@ -1,47 +1,82 @@
-function openCard() {
-  document.querySelector('.envelope').style.display = 'none';
-  document.getElementById('card').style.display = 'block';
-  launchFireworks();
-}
+// script.js
 
-// Fireworks canvas
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Scroll animation on section load
+const sections = document.querySelectorAll('.section');
+const options = {
+  threshold: 0.1
+};
 
-let particles = [];
-
-function launchFireworks() {
-  setInterval(() => {
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height / 2;
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: x,
-        y: y,
-        radius: Math.random() * 2 + 1,
-        color: `hsl(${Math.random() * 360}, 100%, 60%)`,
-        dx: Math.random() * 4 - 2,
-        dy: Math.random() * 4 - 2,
-        life: 100
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('fade-in');
+      const texts = entry.target.querySelectorAll('.animate-text');
+      texts.forEach((el, i) => {
+        el.style.transitionDelay = `${i * 150}ms`;
+        el.classList.add('text-visible');
       });
+      observer.unobserve(entry.target);
     }
-  }, 500);
-  animateFireworks();
-}
+  });
+}, options);
 
-function animateFireworks() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach((p, i) => {
+sections.forEach(section => {
+  observer.observe(section);
+});
+
+// Dark mode toggle
+const toggleBtn = document.getElementById('darkModeToggle');
+toggleBtn?.addEventListener('click', () => {
+  document.body.classList.toggle('light-mode');
+
+  if (document.body.classList.contains('light-mode')) {
+    toggleBtn.textContent = 'Dark Mode';
+  } else {
+    toggleBtn.textContent = 'Light Mode';
+  }
+});
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+
+let w, h, particles = [];
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function createParticles() {
+  particles = [];
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      radius: Math.random() * 2 + 1,
+      vx: Math.random() - 0.5,
+      vy: Math.random() - 0.5
+    });
+  }
+}
+createParticles();
+
+function drawParticles() {
+  ctx.clearRect(0, 0, w, h);
+  ctx.fillStyle = 'rgba(164, 162, 164, 0.39)';
+  particles.forEach(p => {
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-    ctx.fillStyle = p.color;
     ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-    p.life--;
-    if (p.life <= 0) particles.splice(i, 1);
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
   });
-  requestAnimationFrame(animateFireworks);
+  requestAnimationFrame(drawParticles);
 }
+drawParticles();
+
+
+  

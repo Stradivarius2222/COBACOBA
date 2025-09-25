@@ -1,91 +1,269 @@
-body {
+@import url('https:/fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap');
+
+* {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at top, #1d1d1d, #000);
-  overflow: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
   color: white;
+  overflow-x: hidden;
+  background-color: #0b0c10;
+  position: relative;
+}
+
+canvas#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 2rem 4rem;
+  background: transparent;
+  z-index: 10;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.nav-links li a,
+.nav-links li button {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-links li a:hover,
+.nav-links li button:hover {
+  color: #ffd369;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 14rem 2rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
   text-align: center;
 }
 
-.container {
-  padding-top: 100px;
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.envelope {
-  width: 300px;
-  height: 200px;
-  margin: auto;
-  background: #c0392b;
-  position: relative;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
-  transition: transform 0.4s ease;
+.home-section h1 {
+  font-size: 3.5rem;
+  font-family: 'Playfair Display', serif;
 }
 
-.envelope:hover {
-  transform: scale(1.05);
+.profile-section {
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
-.flap {
-  position: absolute;
-  top: -100px;
-  width: 0;
-  height: 0;
-  border-left: 150px solid transparent;
-  border-right: 150px solid transparent;
-  border-bottom: 100px solid #e74c3c;
-  transform-origin: bottom;
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.letter {
-  position: absolute;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  color: white;
+.profile-pic:hover {
+  transform: scale(1.1);
 }
 
-.card {
-  display: none;
-  margin-top: 30px;
-  animation: fadeIn 2s forwards;
+.text {
+  max-width: 500px;
 }
 
-.card h1 {
-  color: #f1c40f;
-  font-size: 36px;
+/* Custom Info Box Style */
+.info-box, .edu-box, .exp-box, .about-box, .skills-box {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  max-width: 800px;
+  width: 90%;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-.card .cake {
-  margin: 20px auto;
-  width: 100px;
-  position: relative;
+.fade-in-box {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.layer {
-  background: #e67e22;
-  height: 20px;
-  margin: 5px 0;
-  border-radius: 5px;
+.info-box h2,
+.edu-box h2,
+.exp-box h2,
+.about-box h2,
+.skills-box h2 {
+  color: #ffd369;
+  margin-bottom: 1rem;
 }
 
-.layer1 { width: 100px; }
-.layer2 { width: 80px; margin-left: 10px; }
-.layer3 { width: 60px; margin-left: 20px; }
-
-.candle {
-  width: 10px;
-  height: 30px;
-  background: #ecf0f1;
-  margin: auto;
-  position: relative;
-  top: -10px;
-  border-radius: 2px;
+.edu-box p::before {
+  content: '\f549';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  margin-right: 0.5rem;
+  color: #ffd369;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+.section-title {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  color: #ffd369;
+  margin-bottom: 2rem;
+  text-align: center;
 }
+
+.about-box::before {
+    content: "💬";
+    composes: box-icon;
+  }
+  
+  .skills-box::before {
+    content: "🧠";
+    composes: box-icon;
+  }
+  
+  .edu-box::before {
+    content: "🎓";
+    composes: box-icon;
+  }
+  
+  .exp-box::before {
+    content: "🧑‍🏫";
+    composes: box-icon;
+  }
+  .exp-box h3 {
+    font-size: 1.5rem;
+    color: #ffd369;
+    margin-bottom: 0.5rem;
+  }
+
+  .home-section h1 {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(90deg, #ffd369, #ffffff, #ffd369);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+  
+  .home-section h1:hover {
+    transform: scale(1.05);
+  }
+  
+  @keyframes shine {
+    to {
+      background-position: -200% center;
+    }
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    transition: background-color 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  /* Basic Navbar Styling */
+
+  
+  .nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001;
+  }
+  
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background: white;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+/* Agar menu animasi keluar dengan halus */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #0b0c10;
+    position: absolute;
+    top: 80px;
+    right: 90;
+    width: 30%;
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 1s ease-in-out;
+    transform: translateY(-100%);
+  }
+  
+  .nav-links.show {
+    display: flex;
+    transform: translateY(0);
+  }
+    .hamburger {
+      display: flex;
+    }
+  }
+
+  
+  
+  
+
+
+
+  
+  
+
+  
+
+      
+  
+  
